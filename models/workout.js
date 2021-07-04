@@ -13,7 +13,12 @@ const workoutSchema = new Schema({
                 trin: true,
                 required: true
             },
-            length: {
+            name: {
+                type: String,
+                trim: true,
+                required: true
+            },
+            duration: {
                 type: Number,
                 default: 0,
                 allowNull: true
