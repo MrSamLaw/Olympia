@@ -50,7 +50,7 @@ router.get("/api/workouts/range", (req, res) => {
 });
 
 //Add exercise
-router.put("api/workouts/:id", (req, res) => {
+router.put("/api/workouts/:id", (req, res) => {
     console.log(req.body);
     db.Workout.findByIdAndUpdate(
         { _id: req.params.id },
