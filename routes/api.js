@@ -32,24 +32,42 @@ router.get("/api/workouts", (req, res) => {
         });
 });
 
-router.get("/api/workouts/range", (req, res) => {
-    db.Workout.aggregate([
-        {
-            $addFields: {
-                totalDuration: { $sum: "$exercises.duration" },
+// router.get("/api/workouts/range", (req, res) => {
+//     db.Workout.aggregate([
+//         {
+//             $addFields: {
+//                 totalDuration: { $sum: "$exercises.duration" },
+//             },
+//         },
+//     ])
+//         // Sort & limit data
+//         .sort({ _id: -1 })
+//         .limit(7)
+//         .then((dbWorkout) => {
+//             res.json(dbWorkout);
+//         })
+//         .catch(err => {
+//             console.log(err);
+//             res.status(400).json(err);
+//         });
+// });
+
+router.get("/api/workouts/range", async (req, res) => {
+    try {
+        const dbWorkout = await db.Workout.aggregate([
+            {
+                $addFields: {
+                    totalDuration: { $sum: "$exercises.duration" },
+                },
             },
-        },
-    ])
-        // Sort & limit data
-        .sort({ _id: -1 })
-        .limit(7)
-        .then((dbWorkout) => {
-            res.json(dbWorkout);
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(400).json(err);
-        });
+        ])
+            //Sort & limit data
+            .sort({ _id: -1 })
+            .limit(7)
+        res.json(dbWorkout);
+    } catch (err) {
+        res.status(400).json(err);
+    }
 });
 
 //Add exercise
