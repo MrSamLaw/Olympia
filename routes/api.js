@@ -4,7 +4,7 @@ const db = require("../models");
 // Create workout
 router.post("/api/workouts", ({ body }, res) => {
     db.Workout.create(body)
-        .then(dbWorkout => {
+        .then((dbWorkout) => {
             console.log(dbWorkout);
             res.json(dbWorkout);
         })
@@ -22,7 +22,7 @@ router.get("/api/workouts", (req, res) => {
             },
         },
     ])
-        .then(dbWorkout => {
+        .then((dbWorkout) => {
             res.json(dbWorkout);
         })
         .catch(err => {
@@ -43,7 +43,7 @@ router.get("/api/workouts/range", (req, res) => {
         // Sort & limit data
         .sort({ _id: -1 })
         .limit(7)
-        .then(dbWorkout => {
+        .then((dbWorkout) => {
             res.json(dbWorkout);
         })
         .catch(err => {
@@ -59,7 +59,7 @@ router.put("/api/workouts/:id", (req, res) => {
         { $push: { exercises: req.body } },
         { upsert: true }
     )
-        .then(dbWorkout => {
+        .then((dbWorkout) => {
             res.json(dbWorkout);
         })
         .catch(err => {
