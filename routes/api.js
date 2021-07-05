@@ -27,7 +27,7 @@ router.get("/api/workouts", (req, res) => {
         })
         .catch(err => {
             console.log(err);
-            console.log(dbWorkout)
+            //console.log(dbWorkout)
             res.status(400).json(err);
         });
 });
@@ -47,6 +47,7 @@ router.get("/api/workouts/range", (req, res) => {
             res.json(dbWorkout);
         })
         .catch(err => {
+            console.log(err);
             res.status(400).json(err);
         });
 });
