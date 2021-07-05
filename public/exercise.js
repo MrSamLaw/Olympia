@@ -135,6 +135,9 @@ function clearInputs() {
   repsInput.value = "";
   resistanceDurationInput.value = "";
   weightInput.value = "";
+  workoutTypeSelect.selectedIndex = 0;
+  cardioForm.classList.add("d-none");
+  resistanceForm.classList.add("d-none");
 }
 
 if (workoutTypeSelect) {
