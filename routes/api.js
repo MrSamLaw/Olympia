@@ -66,6 +66,7 @@ router.get("/api/workouts/range", async (req, res) => {
             .limit(7)
         res.json(dbWorkout);
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });
