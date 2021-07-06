@@ -67,7 +67,7 @@ function populateChart(data) {
       labels,
       datasets: [
         {
-          label: 'Pounds',
+          label: 'KGs',
           data: pounds,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -92,7 +92,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: 'Pounds Lifted (Last 7 days)',
+        text: 'KGs Lifted (Last 7 days)',
       },
       scales: {
         yAxes: [
